@@ -1,7 +1,8 @@
-import React from "react";
+import React,{useState} from "react";
 import {Link} from 'react-router-dom'
 import Buttoncomponent from "../components/buttoncomponent";
 import mainlogo from "./../assets/loginsignup/plant-a-tree.png";
+import {useForm} from 'react-hook-form'
 import { GiFarmer } from "react-icons/gi";
 import bgimg from "./../assets/loginsignup/bg.jpg"
 import {   FaEye, FaEyeSlash  } from "react-icons/fa";
@@ -9,6 +10,19 @@ import { ImShocked } from "react-icons/im";
 import { FaRegFaceSmileBeam ,  } from "react-icons/fa6";
 
 const Login = () => {
+
+
+const [eye, eyelock] =useState(true)
+
+function visibility () {
+
+eyelock(preveye =>!preveye)
+
+}
+const error =""
+
+
+
   return (
     <div className="flex border-red-700  justify-center w-full h-screen items-center bg-[#F5F5F5]  " style={{backgroundImage: `url(${bgimg})`,backgroundPosition:"center", backgroundSize:"cover", backgroundRepeat:"no-repeat"}}  >
       {/* url("https://shorturl.at/RhsEn") */}
@@ -25,7 +39,10 @@ const Login = () => {
     <p className="text-[green] text-center font-agrofont">where farmers <GiFarmer className=" w-[150px] h-[50px]fill-[brown]  "style={{ width: '50px', height: '50px', color: 'brown', display:"inline-block" }}    />  meet and yield!!</p>
         <div className="flex flex-col gap-[20px] mt-[20px] justify-center items-center">
           <input type="email" placeholder="email"  className=" sm:w-[200px] xl:w-[360px] xl:h-[38px] pl-[10px] sm:placeholder:ml-[50px] placeholder:ml-[100px] border-b  focus:outline-[#008a00] focus:rounded-lg bg-transparent" />
-          <input type="password" placeholder="password" className="sm:w-[200px] xl:w-[360px] xl:h-[38px]  pl-[10px]  lg:placeholder:ml-[50px]  border-b  focus:outline-[#008a00] focus:rounded-lg bg-transparent"   />
+         <div className=" relative">
+         
+          <input type={eye?"password":"text"} placeholder="password" className="sm:w-[200px] xl:w-[360px] xl:h-[38px]  pl-[10px]  lg:placeholder:ml-[50px]  border-b  focus:outline-[#008a00] focus:rounded-lg bg-transparent"   /> {eye?(<FaEyeSlash onClick={visibility} className="absolute  right-[0px] top-[0px] "/>):(<FaEye onClick={visibility} className="absolute  right-[0px] top-[0px] "/>)}
+          </div>
           <Buttoncomponent
             className={" xl:w-[347px] xl:h-[30px] w-[250px] h-[30px] border-[1px] rounded-[10px] bg-[#008a00] text-white"}
             name={"sign in"}
@@ -39,7 +56,7 @@ const Login = () => {
 
 </div>
 
-
+<p className="text-[red] font-bold">{error?error:"niul"}</p>
 
         </div>
       </form>
