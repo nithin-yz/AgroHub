@@ -1,8 +1,45 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&family=Jersey+15+Charted&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&family=Jersey+15+Charted&family=Jersey+25+Charted&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&family=Jersey+15+Charted&family=Jersey+25+Charted&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lobster&family=Major+Mono+Display&family=Outfit:wght@648&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&family=Jersey+15+Charted&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&family=Jersey+15+Charted&family=Jersey+25+Charted&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&family=Jersey+15+Charted&family=Jersey+25+Charted&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lobster&family=Major+Mono+Display&family=Outfit:wght@648&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@media screen and (min-width: 0px) and (max-width: 1280px) {
+  .signupback {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+@media screen and (min-width: 0px) and (max-width: 480px) {
+  .signupback {
+ 
+    background-image: url("./assets/loginsignup/5.jpg");
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 706px) {
+  .signupback {
+    background-image: url("./assets/loginsignup/1.jpg");
+  
+  }
+}
+
+@media screen and (min-width: 707px) and (max-width: 772px) {
+  .signupback {
+
+    background-image: url("./assets/loginsignup/3.jpg");
+  }
+}
+
+@media screen and (min-width: 773px) and (max-width: 1279px) {
+  .signupback {
+   
+    background-image: url("./assets/loginsignup/risk2.jpg");
+    /* background-size: auto; */
+    
+  }
+}

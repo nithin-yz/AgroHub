@@ -1,10 +1,10 @@
 import React,{useState} from "react";
 import {Link} from 'react-router-dom'
-import Buttoncomponent from "../components/buttoncomponent";
-import mainlogo from "./../assets/loginsignup/plant-a-tree.png";
-import {useForm} from 'react-hook-form'
+import Buttoncomponent from "./../../components/buttoncomponent";
+import mainlogo from "./../../assets/loginsignup/plant-a-tree.png"
+import {useForm} from 'react-hook-form' 
 import { GiFarmer } from "react-icons/gi";
-import bgimg from "./../assets/loginsignup/bg.jpg"
+import bgimg from "./../../assets/loginsignup/bg.jpg"
 import {   FaEye, FaEyeSlash  } from "react-icons/fa";
 import { ImShocked } from "react-icons/im";
 import { FaRegFaceSmileBeam ,  } from "react-icons/fa6";
@@ -52,11 +52,11 @@ const error =""
 
 <p className="font-trial">Forgot your password? {"\u00A0\u00A0\u00A0"} <ImShocked className="inline  fill-[#a52a2a]"/>{"\u00A0"} <Link to='/signup' className="  text-[#00802fc6]" >click here</Link></p>
 
-<p className="text-black  font-trial"  >No account? No problem {"\u00A0"}<FaRegFaceSmileBeam  className=" inline   fill-[#a52a2a]"/>{"\u00A0\u00A0\u00A0"}<Link to='/signup' className=" inline text-[#008051c6]" >click here</Link></p>
+<p className="text-black  font-trial"  >No account? No problem {"\u00A0"}<FaRegFaceSmileBeam  className=" inline   fill-[#a52a2a]"/>{"\u00A0\u00A0\u00A0"}<Link to='/farmer/signup' className=" inline text-[#008051c6]" >click here</Link></p>
 
 </div>
 
-<p className="text-[red] font-bold">{error?error:"niul"}</p>
+{/* <p className="text-[red] font-bold">{error?error:"niul"}</p> */}
 
         </div>
       </form>

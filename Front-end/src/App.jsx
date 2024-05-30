@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import Login from './Pages/Loginpage'
+
+import Adminrouter from "./router/Adminrouter"
+import Userrouter from  "./router/userrouter"
 
 
 
@@ -13,7 +15,8 @@ function App() {
 <BrowserRouter>
 <Routes>
 
-<Route path="/"  element={<Login/>} />
+<Route path="/admin/"  element={<Adminrouter/>} />
+<Route path="/*"  element ={<Userrouter/>}/>
 
 
 
