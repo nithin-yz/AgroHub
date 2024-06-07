@@ -3,7 +3,7 @@ import Buttoncomponent from './buttoncomponent';
 
 const Footer = () => {
   return (
-    <footer className="flex flex-col bg-[#202024] py-8 items-center mt-80 ">
+    <footer className="flex flex-col bg-[black] py-8 items-center mt-[580px] w-screen  ">
 <div className='flex flex-col justify-center items-center'>
 <h1 className='text-center  mx-[5px] text-[white] text-[15px] font-trial'>Get All Alerts- and important information related to cultivation weather and crop updates</h1>
 
@@ -16,37 +16,37 @@ const Footer = () => {
 
 </div>
 
-<hr className='mt-[50px] w-[70%]  mb-[50px] text-center'/>
+<hr className='mt-[50px] w-[70%]  mb-[50px] text-center '/>
 
       <div className="w-screen mx-auto lg:px-8  ">
         <div className="flex flex-wrap items-center justify-center gap-16">
           <div className="w-auto ">
-            <h3 className="text-lg font-semibold text-white mb-2 ">Categories</h3>
-            <ul className="text-gray-300 text-center flex flex-col items-start">
+            <h3 className="lg:text-lg  text-sm font-semibold text-white mb-2 ">Categories</h3>
+            <ul className="text-gray-300 text-center flex flex-col items-start text-[10px] lg:text-[20px] ">
               <li>Farm Machinery</li>
               <li>Crop Management</li>
               <li>Irrigation Systems</li>
             </ul>
           </div>
           <div className=" ">
-            <h3 className="text-lg font-semibold text-white mb-2 ">Customer Services</h3>
-            <ul className="text-gray-300 text-center flex flex-col items-start">
+            <h3 className="lg:text-lg  text-sm  font-semibold text-white mb-2 ">Customer Services</h3>
+            <ul className="text-gray-300 text-center flex flex-col items-start text-[10px] lg:text-[20px]">
               <li>Help Center</li>
               <li>Contact Us</li>
               <li>Policies & Rules</li>
             </ul>
           </div>
           <div className="  ">
-            <h3 className="text-lg font-semibold text-white mb-2 ">About Us</h3>
-            <ul className="text-gray-300 text-center flex flex-col items-start">
+            <h3 className="lg:text-lg  text-sm font-semibold text-white mb-2 ">About Us</h3>
+            <ul className="text-gray-300 text-center flex flex-col items-start text-[10px] lg:text-[20px]">
               <li>Our Story</li>
               <li>Our Mission</li>
               <li>Terms of Use</li>
             </ul>
           </div>
           <div className="   ">
-            <h3 className="text-lg font-semibold text-white mb-2 ">Join Our Community</h3>
-            <ul className="text-gray-300 text-center flex flex-col items-start">
+            <h3 className="lg:text-lg  text-sm font-semibold text-white mb-2 ">Join Our Community</h3>
+            <ul className="text-gray-300 text-center flex flex-col items-start text-[10px] lg:text-[20px]">
               <li>Free Membership</li>
               <li>Premium Plans</li>
               <li>Marketplace</li>
@@ -65,7 +65,7 @@ const Footer = () => {
           </div>
           <div className="flex space-x-4">
             
-        
+
           </div>
         </div>
       </div>
