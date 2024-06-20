@@ -3,7 +3,7 @@ import Buttoncomponent from './buttoncomponent';
 
 const Footer = () => {
   return (
-    <footer className="flex flex-col bg-[black] py-8 items-center mt-[580px] w-screen  ">
+    <footer className="flex flex-col bg-[black] py-8 items-center mt-[50px] w-screen  ">
 <div className='flex flex-col justify-center items-center'>
 <h1 className='text-center  mx-[5px] text-[white] text-[15px] font-trial'>Get All Alerts- and important information related to cultivation weather and crop updates</h1>
 

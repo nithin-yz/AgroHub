@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
+
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Buttoncomponent from "./../../components/buttoncomponent";
 import mainlogo from "./../../assets/loginsignup/plant-a-tree.png";
@@ -9,6 +11,9 @@ import bgimage from "./../../assets/loginsignup/bg.jpg";
 import rice from "./../../assets/loginsignup/rice.jpg";
 import grape1 from "./../../assets/loginsignup/grape1.jpg"
 import grape2 from "./../../assets/loginsignup/grape2.jpg"
+
+import * as Yup from "yup";
+
 import { GiFarmer } from "react-icons/gi";
 
 const Signup = () => {
@@ -17,6 +22,27 @@ const Signup = () => {
   const toggleVisibility = () => {
     setEye(prevEye => !prevEye);
   };
+
+
+
+  const SignupSchema = Yup.object().shape({
+username:Yup.string().required('username is required'),
+fullname:Yup.string().required('Full name is required'),
+email:Yup.string().email('Invalid email').required('email is required'),
+password: Yup.string()
+.min(8, 'Password must be at least 8 characters long')
+.matches(
+  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d@$!%*?&]{8,}$/,
+  "Password must contain at least one letter, one number, and one special character"
+)
+.required('Password is required'),
+confirmPassword:Yup.string().oneOf([Yup.ref('password'),null],'password doesnt match').required('Confirm Password is required'),
+
+
+
+
+
+  })
 
   return (
     <div className="flex justify-center items-center w-full h-screen bg-[#F5F5F5] signupback">
@@ -29,21 +55,60 @@ const Signup = () => {
           <p className="text-green-700 text-center font-semibold font-trial mb-4 ">
             where farmers <GiFarmer className="w-10 h-10 inline-block" /> meet and yield!!
           </p>
-          <form className="flex flex-col gap-4 p-3 xl:p-0 ">
-            <input type="text" placeholder="Username" className="input-field border-b-2 border-gray-300 focus:outline-none focus:border-green-700 transition duration-200" />
-            <input type="text" placeholder="Full Name" className="input-field border-b-2 border-gray-300 focus:outline-none focus:border-green-700 transition duration-200" />
-            <input type="email" placeholder="Email" className="input-field border-b-2 border-gray-300 focus:outline-none focus:border-green-700 transition duration-200" />
-            <div className="relative">
-              <input type={eye ? "password" : "text"} placeholder="Password" className="input-field border-b-2 border-gray-300 focus:outline-none focus:border-green-700 transition duration-200 w-full pr-10" />
-              {eye ? (
-                <FaEyeSlash onClick={toggleVisibility} className="absolute right-2 top-2 cursor-pointer text-gray-500" />
-              ) : (
-                <FaEye onClick={toggleVisibility} className="absolute right-2 top-2 cursor-pointer text-gray-500" />
-              )}
-            </div>
-            <input type="password" placeholder="Confirm Password" className="input-field border-b-2 border-gray-300 focus:outline-none focus:border-green-700 transition duration-200" />
-            <Buttoncomponent className="w-full h-10 border border-green-700 rounded-lg bg-green-700 text-white font-semibold mt-4" name="Sign Up" />
-          </form>
+          <Formik
+          initialValues={{
+
+username:"",
+fullName:"",
+email:"",
+password:"",
+confirmPassword:""
+
+
+          }}
+
+validationSchema={SignupSchema}
+onSubmit={(values,{setSubmitting ,resetForm})=>{
+console.log(values);
+setSubmitting(false)
+resetForm()
+
+}}
+>
+
+
+{({isSubmitting})=>(
+          <Form className="flex flex-col gap-4 p-3 xl:p-0 ">
+             <div>
+                  <Field type="text" name="username" placeholder="Username" className="input-field border-b-2 border-gray-300 focus:outline-none focus:border-green-700 transition duration-200  w-3/4" />
+                  <ErrorMessage name="username" component="div" className="text-red-500 text-sm" />
+                </div>
+                <div>
+                  <Field type="text" name="fullname" placeholder="Full Name" className="input-field border-b-2 border-gray-300 focus:outline-none focus:border-green-700 transition duration-200 w-3/4"  />
+                  <ErrorMessage name="fullname" component="div" className="text-red-500 text-sm" />
+                </div>
+                <div>
+                  <Field type="email" name="email" placeholder="Email" className="input-field border-b-2 border-gray-300 focus:outline-none focus:border-green-700 transition duration-200 w-3/4" />
+                  <ErrorMessage name="email" component="div" className="text-red-500 text-sm" />
+                </div>
+                <div className="relative">
+                  <Field type={eye ? "password" : "text"} name="password" placeholder="Password" className="input-field border-b-2 border-gray-300 focus:outline-none focus:border-green-700 transition duration-200 w-full pr-10" />
+                  {eye ? (
+                    <FaEyeSlash onClick={toggleVisibility} className="absolute right-2 top-2 cursor-pointer text-gray-500" />
+                  ) : (
+                    <FaEye onClick={toggleVisibility} className="absolute right-2 top-2 cursor-pointer text-gray-500" />
+                  )}
+                  <ErrorMessage name="password" component="div" className="text-red-500 text-sm" />
+                </div>
+                <div>
+                  <Field type="password" name="confirmPassword" placeholder="Confirm Password" className="input-field border-b-2 border-gray-300 focus:outline-none focus:border-green-700 transition duration-200 w-full" />
+                  <ErrorMessage name="confirmPassword" component="div" className="text-red-500 text-sm" />
+                </div>
+                <Buttoncomponent type="submit" className="w-full h-10 border border-green-700 rounded-lg bg-green-700 text-white font-semibold mt-4" name="Sign Up" disabled={isSubmitting} /> 
+          </Form>
+      
+        )}
+          </Formik>
           <div className="flex flex-col items-center mt-4 text-center">
             <p className="text-black font-medium">
               Already have an account? <Link to='/farmer/login' className="text-green-700 font-semibold">Click here</Link>
