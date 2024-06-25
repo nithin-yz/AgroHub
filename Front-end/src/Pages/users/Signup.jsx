@@ -1,5 +1,9 @@
-import React, { useState } from "react";
+import React, { useState ,lazy} from "react";
 import { Link } from 'react-router-dom';
+import axios from "axios"
+import api from "./../../instance/axiosinstance"
+import Swal from 'sweetalert2';
+import { useNavigate } from "react-router-dom";
 
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -24,7 +28,7 @@ const Signup = () => {
   };
 
 
-
+const navigate=useNavigate()
   const SignupSchema = Yup.object().shape({
 username:Yup.string().required('username is required'),
 fullname:Yup.string().required('Full name is required'),
@@ -32,7 +36,7 @@ email:Yup.string().email('Invalid email').required('email is required'),
 password: Yup.string()
 .min(8, 'Password must be at least 8 characters long')
 .matches(
-  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d@$!%*?&]{8,}$/,
+  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/,
   "Password must contain at least one letter, one number, and one special character"
 )
 .required('Password is required'),
@@ -59,7 +63,7 @@ confirmPassword:Yup.string().oneOf([Yup.ref('password'),null],'password doesnt m
           initialValues={{
 
 username:"",
-fullName:"",
+fullname:"",
 email:"",
 password:"",
 confirmPassword:""
@@ -68,10 +72,49 @@ confirmPassword:""
           }}
 
 validationSchema={SignupSchema}
-onSubmit={(values,{setSubmitting ,resetForm})=>{
+onSubmit={async (values,{setSubmitting ,resetForm})=>{
 console.log(values);
-setSubmitting(false)
+try{
+const response = await api.post("/auth/farmer/signup",values)
+console.log(response)
+
+if(response.status==201){
+Swal.fire({
+
+  icon:"success",
+  title:"Success",
+  text:"user registration is done "
+})
+.then(()=>{
+
 resetForm()
+  navigate('/farmer/login')
+})
+
+}
+
+
+
+
+}catch(error){
+
+  console.log(error)
+  Swal.fire({
+    icon: 'error',
+    title: 'Error',
+    text: error,
+  })
+
+}
+
+
+
+
+
+
+
+// setSubmitting(false)
+
 
 }}
 >
@@ -80,15 +123,15 @@ resetForm()
 {({isSubmitting})=>(
           <Form className="flex flex-col gap-4 p-3 xl:p-0 ">
              <div>
-                  <Field type="text" name="username" placeholder="Username" className="input-field border-b-2 border-gray-300 focus:outline-none focus:border-green-700 transition duration-200  w-3/4" />
+                  <Field type="text" name="username" placeholder="Username" className="input-field border-b-2 border-gray-300 focus:outline-none focus:border-green-700 transition duration-200  w-full" />
                   <ErrorMessage name="username" component="div" className="text-red-500 text-sm" />
                 </div>
                 <div>
-                  <Field type="text" name="fullname" placeholder="Full Name" className="input-field border-b-2 border-gray-300 focus:outline-none focus:border-green-700 transition duration-200 w-3/4"  />
+                  <Field type="text" name="fullname" placeholder="Full Name" className="input-field border-b-2 border-gray-300 focus:outline-none focus:border-green-700 transition duration-200 w-full"  />
                   <ErrorMessage name="fullname" component="div" className="text-red-500 text-sm" />
                 </div>
                 <div>
-                  <Field type="email" name="email" placeholder="Email" className="input-field border-b-2 border-gray-300 focus:outline-none focus:border-green-700 transition duration-200 w-3/4" />
+                  <Field type="email" name="email" placeholder="Email" className="input-field border-b-2 border-gray-300 focus:outline-none focus:border-green-700 transition duration-200 w-full" />
                   <ErrorMessage name="email" component="div" className="text-red-500 text-sm" />
                 </div>
                 <div className="relative">

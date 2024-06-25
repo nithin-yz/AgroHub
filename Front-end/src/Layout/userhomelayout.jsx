@@ -66,7 +66,7 @@ function UserhomeLayout() {
       </div>
 
       {/* Image Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 p-4 w-full max-w-screen-xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 p-4 w-full max-w-screen-xl mx-auto ">
         {bannerarray.map((banner, index) => (
           <div
             key={index}

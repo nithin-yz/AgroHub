@@ -13,7 +13,7 @@ function Userrouter() {
       <Route path="/farmer/signup" element={<Signup />} />
       <Route path="/" element={<UserHome />}>
         <Route path="/" element={<UserhomeLayout />} />
-        <Route path="/userhome" element={<UserhomeLayout />} />
+        <Route path="/home" element={<UserhomeLayout />} />
         
       </Route>
     </Routes>
